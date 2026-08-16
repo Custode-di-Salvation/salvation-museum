@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} | Salvation Museum of History & Natural Sciences</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/museum.css?v=63">
+  <meta name="description" content="Sito ufficiale del Salvation Museum of History & Natural Sciences.">
+</head>
+<body>
+
+  <div class="pre-header">
+    <div class="pre-header-inner">
+      <span>Main Street, Salvation, WV</span>
+      <span class="dim">&middot;</span>
+      <span>Mer&ndash;Dom 10:00&ndash;17:00</span>
+      <span class="dim">&middot;</span>
+      <span>Ingresso libero per i residenti</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <p class="site-title">
+        <a href="/">
+          <span class="name">Salvation Museum</span>
+          <span class="subname">History &amp; Natural Sciences</span>
+        </a>
+      </p>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="/visit/" {% if page.url == '/visit/' %}class="active"{% endif %}>Visita</a></li>
+          <li><a href="/visit/menu/" {% if page.url == '/visit/menu/' %}class="active"{% endif %}>Menù</a></li>
+          <li><a href="/exhibits/" {% if page.url == '/exhibits/' %}class="active"{% endif %}>Sale</a></li>
+          <li><a href="/events/" {% if page.url == '/events/' %}class="active"{% endif %}>Eventi</a></li>
+          <li><a href="/archives/" {% if page.url == '/archives/' %}class="active"{% endif %}>Archivio</a></li>
+          <li><a href="/about/" {% if page.url == '/about/' %}class="active"{% endif %}>Chi siamo</a></li>
+          <li><a href="/support/" {% if page.url == '/support/' %}class="active"{% endif %}>Sostienici</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  {% if isHome %}
+    {{ content | safe }}
+  {% else %}
+    <main class="main-content{% if roomLayout %} main-content-room{% endif %}">
+      {% if page.url != '/' %}
+        {% if crumb %}<a class="crumb" href="{{ crumb.href }}"><i class="fa-solid fa-arrow-left"></i>{{ crumb.label }}</a>{% endif %}
+        {% if eyebrow %}<p class="eyebrow">{{ eyebrow }}</p>{% endif %}
+        <h1>{{ title }}</h1>
+      {% endif %}
+      {{ content | safe }}
+    </main>
+  {% endif %}
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <div class="fname">Salvation Museum</div>
+          <p>Ospitato nella storica Salvation Grange Hall (est. 1908), Main Street, Salvation, West Virginia.</p>
+          <p>Est. sede attuale 2026 &middot; Consiglio Cittadino di Salvation.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Orientarsi</h5>
+          <ul>
+            <li><a href="/visit/">Orari e biglietti</a></li>
+            <li><a href="/exhibits/">Sale espositive</a></li>
+            <li><a href="/events/">Auditorium ed eventi</a></li>
+            <li><a href="/archives/">Archivio storico</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Istituzione</h5>
+          <ul>
+            <li><a href="/about/">Chi siamo</a></li>
+            <li><a href="/support/">Sostieni il museo</a></li>
+            <li><a href="/careers/">Lavora con noi</a></li>
+            <li>Curatore capo – Su appuntamento</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Salvation City Council &middot; Salvation Museum of History &amp; Natural Sciences. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="/js/site.js?v=52" defer></script>
+</body>
+</html>
