@@ -10,7 +10,7 @@ Dispone di circa **quaranta posti a sedere**, impianto di proiezione e audio ess
 
 ## Programmazione regolare
 
-* **Conferenze e seminari:** interventi tematici tenuti dal curatore del museo o da studiosi in visita. Alcuni docenti della *Ashmoth University* tengono qui seminari serali (con prenotazione consigliata).
+* **Conferenze e seminari:** interventi tematici tenuti dal curatore del museo o da studiosi in visita. Alcuni docenti della *Ashmoth College* tengono qui seminari serali (con prenotazione consigliata).
 * **Presentazioni di libri:** incontri con autori locali e regionali per nuove uscite su storia, folklore e natura degli Appalachi.
 * **Proiezioni:** documentari sulla storia del West Virginia, sull'industria mineraria e sull'ecologia del canyon del Blackwater.
 * **Visite guidate tematiche:** spesso concentrate nella sala del folklore o sulla botanica locale.
@@ -29,7 +29,7 @@ Dispone di circa **quaranta posti a sedere**, impianto di proiezione e audio ess
 <script>
   // Array of lore-friendly events
   const allEvents = [
-    { title: "I misteri del Cauldron Lake: geologia e miti", desc: "Conferenza speciale a cura del Dr. Aris Thorne dell'Ashmoth University. Un'analisi delle formazioni carsiche che hanno originato il lago.", tag: "Conferenza" },
+    { title: "I misteri del Cauldron Lake: geologia e miti", desc: "Conferenza speciale a cura del Dr. Aris Thorne dell'Ashmoth College. Un'analisi delle formazioni carsiche che hanno originato il lago.", tag: "Conferenza" },
     { title: "Granny magic e rimedi tradizionali", desc: "Workshop pratico nella radura botanica. Scopri l'uso erboristico storico di consolida e menta di montagna.", tag: "Workshop" },
     { title: "Proiezione: voci dalle miniere", desc: "Documentario inedito sul crollo della Widow's Peak, arricchito da interviste ai discendenti dei minatori.", tag: "Proiezione" },
     { title: "Letture nel bosco", desc: "Attività per bambini nel Giardino Botanico, con le storielle tradizionali della volpe e del corvo.", tag: "Famiglie" },

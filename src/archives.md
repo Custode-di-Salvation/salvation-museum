@@ -20,7 +20,7 @@ L'ala nord del primo piano del Salvation Museum ospita gli uffici direzionali e 
   </div>
   <div class="info-tile">
     <div class="k">Corsia preferenziale</div>
-    <div class="v">Ashmoth University<small>Accordo col Consiglio Cittadino</small></div>
+    <div class="v">Ashmoth College<small>Accordo col Consiglio Cittadino</small></div>
   </div>
 </div>
 
@@ -56,4 +56,4 @@ Per visionare documenti dell'archivio, è necessario rispettare il seguente prot
 
 </div>
 
-<p><i><i class="fa-solid fa-graduation-cap" style="color:var(--brick);"></i> Gli studenti in tesi e i ricercatori dell'Ashmoth University beneficiano di una corsia preferenziale grazie agli accordi stipulati con il Consiglio Cittadino: tempi di approvazione ridotti e, per i progetti di ricerca a lungo termine, la possibilità di prenotare più sessioni consecutive.</i></p>
+<p><i><i class="fa-solid fa-graduation-cap" style="color:var(--brick);"></i> Gli studenti in tesi e i ricercatori dell'Ashmoth College beneficiano di una corsia preferenziale grazie agli accordi stipulati con il Consiglio Cittadino: tempi di approvazione ridotti e, per i progetti di ricerca a lungo termine, la possibilità di prenotare più sessioni consecutive.</i></p>

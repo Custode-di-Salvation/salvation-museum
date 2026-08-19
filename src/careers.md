@@ -32,7 +32,7 @@ title: "Lavora con noi"
     </div>
     <div class="perk-item">
       <span class="ico"><i class="fa-solid fa-graduation-cap"></i></span>
-      <span class="txt"><b>Formazione continua</b><span>Corsi e seminari in collaborazione con l'Ashmoth University</span></span>
+      <span class="txt"><b>Formazione continua</b><span>Corsi e seminari in collaborazione con l'Ashmoth College</span></span>
     </div>
   </div>
 
