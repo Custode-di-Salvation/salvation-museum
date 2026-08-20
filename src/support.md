@@ -87,6 +87,7 @@ Il museo estende la propria profonda gratitudine alle fondazioni, alle famiglie 
   <div class="donor-item"><strong>Buchanan-Stone Foundation</strong> <br><small>Per il fondamentale contributo al restauro delle ali est e ovest</small></div>
   <div class="donor-item"><strong>The Sterling Trust</strong> <br><small>Per la conservazione del patrimonio pionieristico</small></div>
   <div class="donor-item"><strong>Sindacato Minatori Appalachi (Sez. 412)</strong> <br><small>Per la memoria e la dignità dei lavoratori del carbone</small></div>
+  <div class="donor-item"><strong>Famiglia Brennan</strong> <br><small>Per il sostegno continuativo e le donazioni private di dipinti e reperti storici di famiglia</small></div>
 </div>
 
 <div id="modal-donate" class="modal-overlay">
