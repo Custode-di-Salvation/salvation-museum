@@ -54,7 +54,7 @@ export default function ArtworkCard({ work, auctionOpen }) {
 
       <div className={styles.body}>
         <h4 className={styles.title}>
-          {work.title} <span className={styles.year}>({work.year})</span>
+          {work.title} {work.year && <span className={styles.year}>({work.year})</span>}
         </h4>
         <p className={styles.meta}>
           {work.technique} · {work.dimensions}
@@ -123,7 +123,7 @@ export default function ArtworkCard({ work, auctionOpen }) {
         <ImageLightbox
           open={lightboxOpen}
           src={work.image}
-          title={`${work.title} (${work.year})`}
+          title={work.year ? `${work.title} (${work.year})` : work.title}
           onClose={() => setLightboxOpen(false)}
         />
       )}

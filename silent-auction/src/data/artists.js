@@ -77,6 +77,40 @@ export const artists = [
       },
     ],
   },
+  {
+    id: 'anonimo',
+    name: 'Artista anonimo',
+    location: 'Provenienza ignota',
+    bio: `Opere pervenute al museo tramite donazione anonima in occasione dell'inaugurazione. Il ricavato dell'eventuale vendita sarà devoluto interamente al fondo per i futuri ampliamenti del museo.`,
+    tagline: 'Tre tele. Olio su tela e su tavola.',
+    works: [
+      {
+        id: 'anonimo-fallen-crow',
+        title: 'The Fallen Crow',
+        // Anno non indicato: provenienza ignota.
+        technique: 'Olio su tela',
+        dimensions: '50 × 40 cm',
+        basePrice: 400,
+        image: 'https://i.imgur.com/vvElQLw.jpeg',
+      },
+      {
+        id: 'anonimo-four-crows',
+        title: 'The Four Crows',
+        technique: 'Olio su tela',
+        dimensions: '80 × 60 cm',
+        basePrice: 600,
+        image: 'https://i.imgur.com/0q3kwBE.jpeg',
+      },
+      {
+        id: 'anonimo-martyrdom-of-the-crow',
+        title: 'The Martyrdom of the Crow',
+        technique: 'Olio su tela',
+        dimensions: '100 × 70 cm',
+        basePrice: 800,
+        image: 'https://i.imgur.com/AMgYpkI.jpeg',
+      },
+    ],
+  },
 ];
 
 // Data/ora di chiusura automatica dell'asta (fuso orario locale del browser).
