@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import { useAnonymousAuth } from '../../hooks/useAnonymousAuth';
 import { useBids } from '../../hooks/useBids';
-import { useMyBids } from '../../hooks/useMyBids';
 import { usePgName } from '../../hooks/usePgName';
 import { cancelBid, formatAmount } from '../../lib/placeBid';
 import BidForm from '../BidForm/BidForm';
@@ -14,9 +14,10 @@ export default function ArtworkCard({ work, auctionOpen }) {
   // Nome PG indipendente per ogni opera: scrivere in un'opera non deve
   // aggiornare live il campo delle altre opere già a schermo.
   const [pgName, setPgName] = usePgName();
-  // Tiene traccia di quali offerte ho fatto io da questo browser, per questa
-  // opera, a prescindere da cosa scrivo dopo nel campo Nome PG.
-  const { myBidKeys, rememberBid } = useMyBids(work.id);
+  // Identità anonima stabile di questo browser: usata per marcare "di chi è"
+  // ogni offerta, così le regole del database impediscono di cancellare
+  // offerte altrui (vedi firebase.rules.json).
+  const { uid, ready: authReady } = useAnonymousAuth();
 
   const [cancelTarget, setCancelTarget] = useState(null);
   const [cancelling, setCancelling] = useState(false);
@@ -32,7 +33,9 @@ export default function ArtworkCard({ work, auctionOpen }) {
     } catch (err) {
       // eslint-disable-next-line no-console
       console.error('[ArtworkCard] annullamento offerta fallito:', err);
-      setCancelError("Annullamento fallito: riprova tra qualche istante.");
+      setCancelError(
+        "Annullamento fallito: puoi cancellare solo le tue offerte, o riprova tra qualche istante."
+      );
     } finally {
       setCancelling(false);
     }
@@ -70,9 +73,12 @@ export default function ArtworkCard({ work, auctionOpen }) {
               <span className={styles.currentPg}>{highest.pgName}</span>
             </>
           ) : (
-            <span className={styles.noBid}>
-              Nessuna offerta — Base d'asta: ${formatAmount(work.basePrice)}
-            </span>
+            <>
+              <span className={styles.currentLabel}>Nessuna offerta</span>
+              <span className={styles.noBidBase}>
+                Base d'asta: <strong>${formatAmount(work.basePrice)}</strong>
+              </span>
+            </>
           )}
         </div>
 
@@ -80,10 +86,10 @@ export default function ArtworkCard({ work, auctionOpen }) {
           <BidForm
             work={work}
             highest={highest}
-            disabled={loading}
+            disabled={loading || !authReady}
             pgName={pgName}
             onPgNameChange={setPgName}
-            onPlaced={rememberBid}
+            ownerUid={uid}
           />
         ) : (
           <p className={styles.closedNote}>Le offerte sono chiuse per quest'opera.</p>
@@ -93,7 +99,7 @@ export default function ArtworkCard({ work, auctionOpen }) {
 
         <BidHistory
           history={history}
-          myBidKeys={myBidKeys}
+          myUid={uid}
           canCancel={auctionOpen}
           onRequestCancel={(bid) => {
             setCancelError(null);

@@ -3,14 +3,14 @@
     ".read": true,
     "auctionOpen": {
       ".read": true,
-      ".write": true
+      ".write": false
     },
     "bids": {
       "$workId": {
         ".read": true,
-        ".write": true,
         "$bidId": {
-          ".validate": "newData.hasChildren(['pgName', 'amount', 'timestamp']) && newData.child('pgName').isString() && newData.child('amount').isNumber() && newData.child('amount').val() > 0"
+          ".write": "auth != null && (!data.exists() || data.child('ownerUid').val() === auth.uid)",
+          ".validate": "newData.hasChildren(['pgName', 'amount', 'timestamp', 'ownerUid']) && newData.child('pgName').isString() && newData.child('amount').isNumber() && newData.child('amount').val() > 0 && newData.child('ownerUid').val() === auth.uid"
         }
       }
     }

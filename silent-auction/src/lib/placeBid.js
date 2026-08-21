@@ -27,14 +27,18 @@ export function formatAmount(amount) {
 
 /**
  * Scrive una nuova offerta in /bids/{workId}. Il timestamp è assegnato dal server Firebase.
- * Ritorna la chiave della nuova offerta, così il chiamante può ricordarsi che è "sua"
- * (indipendentemente da cosa scriverà poi nel campo nome).
+ * `ownerUid` (dall'autenticazione anonima, vedi useAnonymousAuth) viene salvato insieme
+ * all'offerta: le regole del database lo useranno per permettere di cancellarla solo
+ * a chi l'ha creata. Ritorna la chiave della nuova offerta.
  */
-export async function placeBid(workId, { pgName, amount }) {
+export async function placeBid(workId, { pgName, amount, ownerUid }) {
   if (!hasFirebaseConfig) {
     throw new Error(
       'Firebase non è configurato: copia .env.example in .env.local con le credenziali del progetto.'
     );
+  }
+  if (!ownerUid) {
+    throw new Error('Autenticazione non pronta: riprova tra un istante.');
   }
   const bidsRef = ref(db, `bids/${workId}`);
   const newBidRef = push(bidsRef); // genera solo la chiave, non scrive ancora nulla
@@ -42,11 +46,16 @@ export async function placeBid(workId, { pgName, amount }) {
     pgName: pgName.trim(),
     amount,
     timestamp: serverTimestamp(),
+    ownerUid,
   });
   return newBidRef.key;
 }
 
-/** Rimuove una singola offerta (per l'annullamento di un'offerta propria sbagliata). */
+/**
+ * Rimuove una singola offerta (per l'annullamento di un'offerta propria sbagliata).
+ * Le regole del database rifiutano la richiesta se l'utente autenticato non è
+ * il proprietario originale (ownerUid) dell'offerta.
+ */
 export async function cancelBid(workId, bidKey) {
   if (!hasFirebaseConfig) {
     throw new Error(

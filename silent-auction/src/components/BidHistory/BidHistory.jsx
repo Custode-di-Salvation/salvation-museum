@@ -11,7 +11,7 @@ function formatTimestamp(timestamp) {
   });
 }
 
-export default function BidHistory({ history, myBidKeys, canCancel, onRequestCancel }) {
+export default function BidHistory({ history, myUid, canCancel, onRequestCancel }) {
   return (
     <details className={styles.panel}>
       <summary className={styles.summary}>
@@ -24,7 +24,7 @@ export default function BidHistory({ history, myBidKeys, canCancel, onRequestCan
         ) : (
           <ol className={styles.list}>
             {history.map((bid) => {
-              const isOwn = myBidKeys.includes(bid.key);
+              const isOwn = Boolean(myUid) && bid.ownerUid === myUid;
               return (
                 <li key={bid.key}>
                   <span className={styles.pg}>{bid.pgName}</span>

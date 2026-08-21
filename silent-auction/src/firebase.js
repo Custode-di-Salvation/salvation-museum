@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase } from 'firebase/database';
+import { getAuth } from 'firebase/auth';
 
 // Le credenziali arrivano dalle variabili d'ambiente VITE_FIREBASE_* (vedi .env.example).
 // Nessun segreto è hardcoded: senza un .env.local valido l'app parte comunque,
@@ -28,3 +29,7 @@ if (!hasFirebaseConfig) {
 
 export const app = hasFirebaseConfig ? initializeApp(firebaseConfig) : null;
 export const db = hasFirebaseConfig ? getDatabase(app) : null;
+// Autenticazione anonima: identifica in modo univoco (ma senza login/form)
+// il browser di ogni visitatore, così le regole del database possono impedire
+// che una persona cancelli le offerte di un'altra (vedi useAnonymousAuth).
+export const auth = hasFirebaseConfig ? getAuth(app) : null;

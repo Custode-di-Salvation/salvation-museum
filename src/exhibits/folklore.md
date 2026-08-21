@@ -59,6 +59,10 @@ Un libro manoscritto di rimedi domestici, tramandato da una famiglia del Hollow,
 
 I pannelli didattici della sezione spiegano le origini della *granny magic* con attenzione alla sua natura composita: le pratiche erboristiche e i rimedi casalinghi derivano in larga parte dalla tradizione popolare scoto-irlandese e inglese dei coloni del XVIII secolo; le formule di guarigione per imposizione delle mani e i *charms* recitati (*talking the fire out of a burn, stopping blood*) hanno radici nella tradizione tedesco-pennsylvaniana nota come Braucherei o Pow-wow, codificata nel manuale *Der Lange Verborgene Freund* (1820) di John George Hohman; l'uso di specifiche piante native americane fu appreso dal contatto con i popoli indigeni della regione. I pannelli sottolineano che queste pratiche si collocano nell'ambito della medicina popolare e della religiosità domestica – molte guaritrici integravano preghiere e invocazioni cristiane nelle loro formule – e sono distinte dalla stregoneria cerimoniale o dall'occultismo in senso proprio.
 
+### La collezione Cresswell
+
+Tra le acquisizioni più recenti della sala figura la donazione della famiglia Cresswell: una piccola raccolta di sapere domestico e botanico tramandato lungo la linea femminile della famiglia. Ne fanno parte un vecchio armadio delle erbe medicinali, con i cassettini ancora etichettati a mano; un erbario con schizzi e annotazioni su quando raccogliere determinate piante e in quale fase lunare; alcune pagine sciolte di ricette e rimedi domestici; un set di mollette da bucato intagliate, appartenute alla stessa Hester, fondatrice del museo; e una culla in legno di noce dal fondo leggermente arcuato, che i donatori assicurano "valere" ben più di quanto suggerisca il suo aspetto, per il resto, del tutto ordinario.
+
 </div>
 
 <div id="creature">

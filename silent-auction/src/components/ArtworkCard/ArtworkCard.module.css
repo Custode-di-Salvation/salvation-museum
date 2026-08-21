@@ -117,11 +117,16 @@
   color: var(--forest-deep);
   font-size: 0.9rem;
 }
-.noBid {
+.noBidBase {
   font-family: var(--font-sans);
   font-size: 0.85rem;
   color: var(--ink-mute);
   font-style: italic;
+  white-space: nowrap;
+}
+.noBidBase strong {
+  color: var(--ink-soft);
+  font-style: normal;
 }
 
 .cancelError {

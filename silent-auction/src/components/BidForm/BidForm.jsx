@@ -3,7 +3,7 @@ import ConfirmModal from '../ConfirmModal/ConfirmModal';
 import { formatAmount, placeBid, validateBid } from '../../lib/placeBid';
 import styles from './BidForm.module.css';
 
-export default function BidForm({ work, highest, disabled, pgName, onPgNameChange, onPlaced }) {
+export default function BidForm({ work, highest, disabled, pgName, onPgNameChange, ownerUid }) {
   const [amountInput, setAmountInput] = useState('');
   const [error, setError] = useState(null);
   const [pendingAmount, setPendingAmount] = useState(null);
@@ -32,8 +32,7 @@ export default function BidForm({ work, highest, disabled, pgName, onPgNameChang
   const handleConfirm = async () => {
     setSubmitting(true);
     try {
-      const bidKey = await placeBid(work.id, { pgName, amount: pendingAmount });
-      onPlaced?.(bidKey);
+      await placeBid(work.id, { pgName, amount: pendingAmount, ownerUid });
       setAmountInput('');
       setPendingAmount(null);
     } catch (err) {

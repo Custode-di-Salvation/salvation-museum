@@ -16,10 +16,15 @@ Poi compila `.env.local` con le credenziali del tuo progetto Firebase:
 1. Vai su [console.firebase.google.com](https://console.firebase.google.com) e crea
    un progetto (piano gratuito Spark, sufficiente per un evento).
 2. **Build → Realtime Database → Create Database** (scegli una region, es. `europe-west1`).
-3. Nella tab **Rules**, incolla il contenuto di `firebase.rules.json` (lettura/scrittura
-   aperte: non c'è autenticazione, coerente col fatto che l'app non ha un backend —
-   pensato per un evento fidato, non per produzione pubblica).
-4. **Project settings → General → Your apps → Web app (</>) → registra un'app** e copia
+3. **Build → Authentication → Get started → Sign-in method → Anonymous → Enable**
+   (nessun form di login per l'utente: serve solo per dare a ogni browser un'identità
+   univoca, così le regole del database possono impedire che una persona cancelli le
+   offerte di un'altra).
+4. Nella tab **Rules** del Realtime Database, incolla il contenuto di `firebase.rules.json`.
+   Lettura pubblica per tutti; scrittura/cancellazione di un'offerta permessa solo a chi
+   l'ha creata (verificato via `ownerUid` + autenticazione anonima); `auctionOpen` è
+   scrivibile solo dalla console Firebase (che bypassa le regole), non dall'app.
+5. **Project settings → General → Your apps → Web app (</>) → registra un'app** e copia
    i valori dell'oggetto `firebaseConfig` dentro `.env.local` (incluso `databaseURL`,
    tipo `https://<project-id>-default-rtdb.<region>.firebasedatabase.app`).
 
@@ -36,14 +41,24 @@ Firebase non ricevono/scrivono dati — in console compare un warning.
 ## Struttura dati su Firebase (Realtime Database)
 
 ```
-/auctionOpen: true | false          # flag manuale, gestibile dalla console Firebase
+/auctionOpen: true | false          # flag manuale, gestibile SOLO dalla console Firebase
 /bids/{workId}/{pushId}:
   pgName: string
   amount: number
   timestamp: number (server timestamp)
+  ownerUid: string                  # uid dell'autenticazione anonima di chi ha fatto l'offerta
 ```
 
 Il `workId` è l'`id` dell'opera definito in `src/data/artists.js`.
+
+## Sicurezza: chi può cancellare cosa
+
+Ogni browser, al primo caricamento, ottiene in automatico un'identità anonima da
+Firebase Authentication (nessun form, invisibile all'utente). Ogni offerta salva
+l'`ownerUid` di chi l'ha creata, e le **regole del database** (non solo l'interfaccia)
+permettono di cancellare/modificare un'offerta solo a chi corrisponde a quell'uid.
+Significa che nessuno può toccare le offerte di qualcun altro nemmeno chiamando
+direttamente le API di Firebase (bypassando l'app) — è stato testato esplicitamente.
 
 ## Aggiungere opere/artisti
 
