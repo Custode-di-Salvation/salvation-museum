@@ -62,10 +62,24 @@ compare il banner "L'asta è chiusa — i vincitori verranno annunciati a breve.
 
 ## Deploy su Netlify
 
-Build command: `npm run build` — Publish directory: `dist` (già in `netlify.toml`).
+Questa app **non ha un suo sito Netlify separato**: viene pubblicata come pagina del
+sito del museo, sotto `/asta/` (es. `https://salvation-museum.netlify.app/asta/`).
 
-Ricorda di impostare le stesse variabili `VITE_FIREBASE_*` di `.env.local` nelle
-**Environment variables** del sito Netlify (Site settings → Environment variables),
-altrimenti la build online non si collegherà a Firebase.
+La build combinata è gestita dal `package.json` di root del repo (`salvation-museum/`,
+la cartella sopra questa):
 
-**Il repository non va inizializzato/pushato su GitHub finché non richiesto esplicitamente.**
+- `npm run build:auction` → installa le dipendenze qui dentro e fa `vite build`
+- `npm run build:site` → build Eleventy del museo + `build:auction` + copia
+  `silent-auction/dist/` dentro `_site/asta/`
+
+Impostazioni del sito Netlify (Project configuration → Build & deploy):
+- **Base directory**: (vuoto, radice del repo)
+- **Build command**: `npm run build:site`
+- **Publish directory**: `_site`
+
+Il `base: '/asta/'` in `vite.config.js` serve perché gli asset (JS/CSS) vengano
+referenziati con il percorso giusto una volta serviti da sotto `/asta/`.
+
+Ricorda di impostare le variabili `VITE_FIREBASE_*` di `.env.local` nelle
+**Environment variables** del sito Netlify, altrimenti la build online non si
+collegherà a Firebase.
