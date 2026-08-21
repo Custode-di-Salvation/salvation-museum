@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useBids } from '../../hooks/useBids';
+import { useMyBids } from '../../hooks/useMyBids';
 import { usePgName } from '../../hooks/usePgName';
 import { cancelBid, formatAmount } from '../../lib/placeBid';
 import BidForm from '../BidForm/BidForm';
@@ -13,6 +14,9 @@ export default function ArtworkCard({ work, auctionOpen }) {
   // Nome PG indipendente per ogni opera: scrivere in un'opera non deve
   // aggiornare live il campo delle altre opere già a schermo.
   const [pgName, setPgName] = usePgName();
+  // Tiene traccia di quali offerte ho fatto io da questo browser, per questa
+  // opera, a prescindere da cosa scrivo dopo nel campo Nome PG.
+  const { myBidKeys, rememberBid } = useMyBids(work.id);
 
   const [cancelTarget, setCancelTarget] = useState(null);
   const [cancelling, setCancelling] = useState(false);
@@ -73,7 +77,14 @@ export default function ArtworkCard({ work, auctionOpen }) {
         </div>
 
         {auctionOpen ? (
-          <BidForm work={work} highest={highest} disabled={loading} pgName={pgName} onPgNameChange={setPgName} />
+          <BidForm
+            work={work}
+            highest={highest}
+            disabled={loading}
+            pgName={pgName}
+            onPgNameChange={setPgName}
+            onPlaced={rememberBid}
+          />
         ) : (
           <p className={styles.closedNote}>Le offerte sono chiuse per quest'opera.</p>
         )}
@@ -82,7 +93,7 @@ export default function ArtworkCard({ work, auctionOpen }) {
 
         <BidHistory
           history={history}
-          pgName={pgName}
+          myBidKeys={myBidKeys}
           canCancel={auctionOpen}
           onRequestCancel={(bid) => {
             setCancelError(null);

@@ -1,4 +1,4 @@
-import { push, ref, remove, serverTimestamp } from 'firebase/database';
+import { push, ref, remove, serverTimestamp, set } from 'firebase/database';
 import { db, hasFirebaseConfig } from '../firebase';
 
 /**
@@ -25,7 +25,11 @@ export function formatAmount(amount) {
   return Number(amount).toLocaleString('it-IT');
 }
 
-/** Scrive una nuova offerta in /bids/{workId}. Il timestamp è assegnato dal server Firebase. */
+/**
+ * Scrive una nuova offerta in /bids/{workId}. Il timestamp è assegnato dal server Firebase.
+ * Ritorna la chiave della nuova offerta, così il chiamante può ricordarsi che è "sua"
+ * (indipendentemente da cosa scriverà poi nel campo nome).
+ */
 export async function placeBid(workId, { pgName, amount }) {
   if (!hasFirebaseConfig) {
     throw new Error(
@@ -33,11 +37,13 @@ export async function placeBid(workId, { pgName, amount }) {
     );
   }
   const bidsRef = ref(db, `bids/${workId}`);
-  await push(bidsRef, {
+  const newBidRef = push(bidsRef); // genera solo la chiave, non scrive ancora nulla
+  await set(newBidRef, {
     pgName: pgName.trim(),
     amount,
     timestamp: serverTimestamp(),
   });
+  return newBidRef.key;
 }
 
 /** Rimuove una singola offerta (per l'annullamento di un'offerta propria sbagliata). */

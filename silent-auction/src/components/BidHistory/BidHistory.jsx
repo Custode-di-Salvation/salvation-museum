@@ -11,9 +11,7 @@ function formatTimestamp(timestamp) {
   });
 }
 
-export default function BidHistory({ history, pgName, canCancel, onRequestCancel }) {
-  const normalizedPgName = pgName.trim().toLowerCase();
-
+export default function BidHistory({ history, myBidKeys, canCancel, onRequestCancel }) {
   return (
     <details className={styles.panel}>
       <summary className={styles.summary}>
@@ -26,7 +24,7 @@ export default function BidHistory({ history, pgName, canCancel, onRequestCancel
         ) : (
           <ol className={styles.list}>
             {history.map((bid) => {
-              const isOwn = normalizedPgName.length > 0 && bid.pgName.trim().toLowerCase() === normalizedPgName;
+              const isOwn = myBidKeys.includes(bid.key);
               return (
                 <li key={bid.key}>
                   <span className={styles.pg}>{bid.pgName}</span>
