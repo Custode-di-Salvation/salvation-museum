@@ -1,0 +1,93 @@
+.form {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--rule);
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 0.7rem;
+  min-width: 0;
+}
+
+.field {
+  /* min-width: 0 permette alla colonna della grid di restringersi sotto la
+     larghezza intrinseca dell'input (altrimenti l'input trabocca dalla card). */
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.field input {
+  width: 100%;
+  min-width: 0;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: var(--paper-3);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 8px 10px;
+}
+.field input:focus {
+  outline: none;
+  border-color: var(--brass);
+}
+.field input:disabled {
+  background: var(--paper-2);
+  color: var(--ink-mute);
+  cursor: not-allowed;
+}
+
+.error {
+  color: var(--brick-deep);
+  font-size: 0.8rem;
+  margin-bottom: 0.7rem;
+}
+
+.submit {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  background: var(--brick);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 10px 18px;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+.submit:hover:not(:disabled) {
+  background: var(--forest-deep);
+  transform: translateY(-1px);
+}
+.submit:disabled {
+  background: var(--ink-mute);
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 420px) {
+  .fields {
+    grid-template-columns: 1fr;
+  }
+}

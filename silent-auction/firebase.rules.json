@@ -1,0 +1,18 @@
+{
+  "rules": {
+    ".read": true,
+    "auctionOpen": {
+      ".read": true,
+      ".write": true
+    },
+    "bids": {
+      "$workId": {
+        ".read": true,
+        ".write": true,
+        "$bidId": {
+          ".validate": "newData.hasChildren(['pgName', 'amount', 'timestamp']) && newData.child('pgName').isString() && newData.child('amount').isNumber() && newData.child('amount').val() > 0"
+        }
+      }
+    }
+  }
+}

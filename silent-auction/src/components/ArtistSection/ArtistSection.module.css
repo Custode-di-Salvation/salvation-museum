@@ -1,0 +1,71 @@
+.section {
+  margin: 3rem 0;
+}
+.section + .section {
+  padding-top: 3rem;
+  border-top: 1px solid var(--rule);
+}
+
+.bio {
+  /* Stessa larghezza della griglia delle opere qui sotto, non più stretta */
+  max-width: none;
+  margin-bottom: 1.8rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-bottom: 0.4em;
+}
+.eyebrow::before {
+  content: '';
+  width: 16px;
+  height: 1px;
+  background: var(--brass);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--forest-deep);
+  margin-bottom: 0.3em;
+}
+
+.tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--brick-deep);
+  font-size: 1.02rem;
+  margin-bottom: 0.7em;
+}
+
+.bioText {
+  color: var(--ink-soft);
+  font-weight: 300;
+  font-size: 0.95rem;
+  text-align: justify;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 620px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

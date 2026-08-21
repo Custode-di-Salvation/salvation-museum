@@ -1,0 +1,87 @@
+/* Palette e tipografia mutuate da salvation-museum/src/css/museum.css, per coerenza grafica */
+:root {
+  /* Superfici */
+  --paper: #f7f2e6;
+  --paper-2: #efe6d2;
+  --paper-3: #fffdf8;
+
+  /* Testo */
+  --ink: #292520;
+  --ink-soft: #55503f;
+  --ink-mute: #8a8368;
+
+  /* Palette istituzionale */
+  --forest: #24402b;
+  --forest-deep: #16261b;
+  --brick: #8c3b31;
+  --brick-deep: #6e2c24;
+  --brass: #a9863f;
+  --brass-light: #cba85c;
+  --brass-deep: #7c6029;
+  --slate: #4a5559;
+
+  --rule: #d9cfb4;
+  --rule-soft: #e8e0cc;
+
+  /* Tipografia */
+  --font-display: 'Cormorant Garamond', 'Merriweather', serif;
+  --font-serif: 'Merriweather', serif;
+  --font-sans: 'Inter', sans-serif;
+
+  --shadow-card: 0 2px 4px rgba(36, 32, 20, 0.06), 0 10px 24px rgba(36, 32, 20, 0.07);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--paper);
+  background-image: radial-gradient(rgba(120, 100, 60, 0.05) 1px, transparent 1px);
+  background-size: 3px 3px;
+  color: var(--ink);
+  line-height: 1.65;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--forest);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  color: var(--brick);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: var(--forest);
+  text-decoration: underline;
+}
+
+button {
+  font-family: inherit;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: var(--rule);
+  margin: 2em 0;
+}

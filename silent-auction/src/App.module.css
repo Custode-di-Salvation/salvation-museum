@@ -1,0 +1,16 @@
+.main {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 2.2rem 20px 3rem;
+  flex: 1;
+  width: 100%;
+}
+
+.footer {
+  background: var(--forest-deep);
+  color: rgba(255, 255, 255, 0.55);
+  text-align: center;
+  padding: 1.4rem 20px;
+  font-size: 0.78rem;
+  border-top: 3px solid var(--brass);
+}

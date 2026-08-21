@@ -1,0 +1,24 @@
+.banner {
+  margin: 1.6rem 0 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--paper-3);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--brick);
+  border-radius: 2px;
+  box-shadow: var(--shadow-card);
+  padding: 1rem 1.4rem;
+}
+.banner i {
+  color: var(--brick);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.banner p {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+.banner strong {
+  color: var(--brick-deep);
+}
